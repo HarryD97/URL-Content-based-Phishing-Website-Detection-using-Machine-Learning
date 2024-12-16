@@ -1,5 +1,12 @@
-
-# URL & Content based Phishing Website Detection using Machine Learning   
+# Introduction
+1. Install the library from requirements.txt.
+2. Run websites_collections.py (https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning/blob/master/dataset/websites_collection.py) to crawl data with the URLs from verified_online.csv and tranco_list.csv.
+3. Follow Training.ipynb (https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning/blob/master/Model/Training.ipynb) to train ML models.
+4. Run app.py to deploy the model (I used the only Top 20 features to build the model for the chrome extension ).
+5. Deploy the chrome extension by selecting the whole folder "Google Extension".
+    ![](https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning/blob/master/Image/extension.png?raw=t)
+# Final Report:
+##  URL & Content based Phishing Website Detection using Machine Learning   
 **Team Member & Author**: Haofei Ding  
 ## 1. Problems  
 Phishing websites pose a significant threat to internet security by mimicking legitimate websites to steal sensitive information such as usernames and passwords. Traditional detection methods often rely on static patterns and rules, which can lead to high false-positive rates and ineffective defenses against new phishing strategies. This project focuses on developing a robust machine learning model to effectively detect phishing websites. In addition to extracting features from the URL itself, the model incorporates features such as webpage structure, content, and user interaction patterns for training. During this process, the most critical features for phishing detection are identified and classified. Finally, a browser plugin is developed to deploy the best-performing model for phishing detection.  
@@ -92,7 +99,7 @@ Best n_estimators: 22
 |------------|-----------|-----------|-----------|
 | 0          | 0.968535  | 0.974283  | 0.971400  |
 | 1          | 0.974155  | 0.968379  | 0.971259  |
-| Accuracy   | 0.971330  | 0.971330  | 0.971330  |
+| Accuracy   | 0.971330  | 
 | Macro Avg  | 0.971345  | 0.971331  | 0.971330  |
 
 #### 3.2.4 Gradient Boosting
@@ -114,7 +121,7 @@ Best Learning Rate: 0.1
 |------------|-----------|-----------|-----------|
 | 0          | 0.967536  | 0.972799  | 0.970160  |
 | 1          | 0.972678  | 0.967391  | 0.970027  |
-| Accuracy   | |
+| Accuracy   | 0.970107  |
 | Macro Avg  | 0.970107  | 0.970095  | 0.970094  |
 
 #### 3.2.6 XGBoost 
@@ -125,7 +132,7 @@ Best Learning Rate: 0.8
 |------------|-----------|-----------|-----------|
 | 0          | 0.967838  | 0.967359  | 0.967598  |
 | 1          | 0.967407  | 0.967885  | 0.967646  |
-| Accuracy   | 0.967622  | 0.967622  | 0.967622  |
+| Accuracy   | 0.967622  |  |
 | Macro Avg  | 0.967623  | 0.967622  | 0.967622  |
 
 
@@ -134,32 +141,6 @@ Based on the results shown in the table, I built a Chrome extension to deploy th
 ![enter image description here](https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning/blob/master/Image/IMPL.png?raw=true)
   
 ## 4. Experimental results  
-### Evaluation Metrics  
-#### **Precision**:   
-  $$  
-  \text{Precision} = \frac{\text{True Positives (TP)}}{\text{True Positives (TP)} + \text{False Positives (FP)}}  
-  $$  
-- **Interpretation**: Precision measures the proportion of true positive predictions out of all positive predictions made by the model. High precision indicates that when the model predicts a positive class, it is usually correct. It is crucial in scenarios where false positives are costly.  
-  
-#### **Recall**:   
-  $$  
-  \text{Recall} = \frac{\text{True Positives (TP)}}{\text{True Positives (TP)} + \text{False Negatives (FN)}}  
-  $$  
-- **Interpretation**: Recall measures the proportion of true positive predictions out of all actual positive instances. High recall indicates that the model successfully identifies most of the actual positives. It is important in situations where missing true positives is costly.  
-  
-#### **F1-Score**:   
-  $$  
-  F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}  
-  $$  
-- **Interpretation**: The F1-score is the harmonic mean of precision and recall, providing a single metric to balance both. A high F1-score indicates a good balance between precision and recall, useful when both false positives and false negatives are equally important.  
-
-#### **Accuracy**  
-  $$  
-  \text{Accuracy} = \frac{\text{Correct Predictions}}{\text{Total Predictions}}  
-  $$  
-- **Interpretation**: Accuracy is the overall proportion of correct predictions made by the model. Accuracy provides a general measure of model performance but can be misleading in imbalanced datasets.  
- 
-### Overall Result
 ![enter image description here](https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning/blob/master/Image/RES.png?raw=true)
 - **Best Overall Performance**: **Random Forest**
   - It has the highest accuracy (0.971) and F1-score (0.972).
@@ -179,6 +160,7 @@ Overall, **Random Forest** stands out as the best-performing model due to its hi
 ![enter image description here](https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning/blob/master/Image/Top20.png?raw=true)
   
 ## 5. Future work  
+
 1. **Feature Enhancement**:
    - Explore additional features that can improve model accuracy and robustness, such as user interaction patterns and advanced content analysis.
 
@@ -209,6 +191,3 @@ Overall, **Random Forest** stands out as the best-performing model due to its hi
   
 ## 7. Project Repository  
 https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning
-
-
-
