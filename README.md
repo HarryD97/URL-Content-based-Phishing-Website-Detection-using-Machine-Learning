@@ -179,10 +179,6 @@ Overall, **Random Forest** stands out as the best-performing model due to its hi
 ![enter image description here](https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning/blob/master/Image/Top20.png?raw=true)
   
 ## 5. Future work  
-  Based on the experimental results, here are some suggestions for future work:
-
-### Future Work
-
 1. **Feature Enhancement**:
    - Explore additional features that can improve model accuracy and robustness, such as user interaction patterns and advanced content analysis.
 
