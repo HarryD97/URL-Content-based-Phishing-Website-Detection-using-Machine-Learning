@@ -145,3 +145,34 @@ XGBoost is an optimized distributed gradient boosting library that focuses on pe
   
 ## 7. Project Repository  
 https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning
+
+
+
+
+
+### Evaluation Metrics  
+#### **Precision**:   
+  $$  
+  \text{Precision} = \frac{\text{True Positives (TP)}}{\text{True Positives (TP)} + \text{False Positives (FP)}}  
+  $$  
+- **Interpretation**: Precision measures the proportion of true positive predictions out of all positive predictions made by the model. High precision indicates that when the model predicts a positive class, it is usually correct. It is crucial in scenarios where false positives are costly.  
+  
+#### **Recall**:   
+  $$  
+  \text{Recall} = \frac{\text{True Positives (TP)}}{\text{True Positives (TP)} + \text{False Negatives (FN)}}  
+  $$  
+- **Interpretation**: Recall measures the proportion of true positive predictions out of all actual positive instances. High recall indicates that the model successfully identifies most of the actual positives. It is important in situations where missing true positives is costly.  
+  
+#### **F1-Score**:   
+  $$  
+  F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}  
+  $$  
+- **Interpretation**: The F1-score is the harmonic mean of precision and recall, providing a single metric to balance both. A high F1-score indicates a good balance between precision and recall, useful when both false positives and false negatives are equally important.  
+
+#### **Accuracy**  
+  $$  
+  \text{Accuracy} = \frac{\text{Correct Predictions}}{\text{Total Predictions}}  
+  $$  
+- **Interpretation**: Accuracy is the overall proportion of correct predictions made by the model. Accuracy provides a general measure of model performance but can be misleading in imbalanced datasets.  
+ 
+### Overall Result
