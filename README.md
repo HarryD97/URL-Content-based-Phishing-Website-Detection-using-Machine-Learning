@@ -63,7 +63,7 @@ Before starting the ML model training, the data is split into an 80-20 ratio. Th
   
 ####   3.2.1 K-Nearest Neighbors (KNN)
 KNN is a simple, non-parametric algorithm used for classification and regression tasks. It classifies data points based on the majority vote of their neighbors, with the data point being assigned to the class most common among its k nearest neighbors, as determined by a distance metric like Euclidean distance. 
-![](https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning/blob/master/Image/output.png?raw=true)
+![](https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning/blob/master/Image/output.png?raw=t)
 Best n_neighbors Value: 1
 |            | Precision | Recall  | F1-Score |
 |------------|-----------|---------|----------|
@@ -75,81 +75,65 @@ Best n_neighbors Value: 1
 
 #### 3.2.2 Decision Tree
 A decision tree is a non-parametric supervised learning algorithm that can be used for both classification and regression tasks. It splits the data into subsets based on the value of input features, forming a tree-like structure where each node represents a decision based on an attribute, and each branch represents the outcome of that decision. Decision trees are intuitive and easy to interpret, allowing for clear visualization of decision-making processes. They handle both numerical and categorical data well.
-![enter image description here](https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning/blob/master/Image/DTCV.png?raw=true)
+![enter image description here](https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning/blob/master/Image/DTCV.png?raw=tr)
 Best max_depth: 29
 |            | Precision | Recall    | F1-Score  |
 |------------|-----------|-----------|-----------|
 | 0          | 0.958146  | 0.951039  | 0.954579  |
 | 1          | 0.951447  | 0.958498  | 0.954959  |
-| Accuracy   | 0.954770  | 0.954770  | 0.954770  |
+| Accuracy   | 0.954770  | |
 | Macro Avg  | 0.954797  | 0.954768  | 0.954769  |
 
 #### 3.2.3 Random Forest 
-Random Forest is an ensemble learning method that constructs multiple decision trees during training and outputs the mode of their predictions for classification tasks. It reduces overfitting by averaging multiple decision trees, thus improving accuracy and robustness. Random Forest is versatile and performs well with large datasets but can be computationally intensive. **Why Use It:** Random Forest is particularly useful for handling large datasets with many features, as it can automatically manage feature importance and interactions, leading to better generalization across diverse phishing tactics.
+Random Forest is an ensemble learning method that constructs multiple decision trees during training and outputs the mode of their predictions for classification tasks. It reduces overfitting by averaging multiple decision trees, thus improving accuracy and robustness. Random Forest is versatile and performs well with large datasets but can be computationally intensive. Random Forest is particularly useful for handling large datasets with many features, as it can automatically manage feature importance and interactions, leading to better generalization across diverse phishing tactics.
+![enter image description here](https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning/blob/master/Image/RFCV.png?raw=tr)
+Best n_estimators: 22
+|            | Precision | Recall    | F1-Score  |
+|------------|-----------|-----------|-----------|
+| 0          | 0.968535  | 0.974283  | 0.971400  |
+| 1          | 0.974155  | 0.968379  | 0.971259  |
+| Accuracy   | 0.971330  | 0.971330  | 0.971330  |
+| Macro Avg  | 0.971345  | 0.971331  | 0.971330  |
+
 #### 3.2.4 Gradient Boosting
-Gradient Boosting is an iterative method that builds a model in stages by optimizing a loss function. It combines multiple weak learners, usually decision trees, to create a strong predictive model by sequentially correcting the errors made by previous models. **Why Use It:** This model is beneficial when you need a high-performing classifier that can adapt to subtle patterns in the data, such as those found in evolving phishing strategies.
+Gradient Boosting is an iterative method that builds a model in stages by optimizing a loss function. It combines multiple weak learners, usually decision trees, to create a strong predictive model by sequentially correcting the errors made by previous models.  This model is beneficial when you need a high-performing classifier that can adapt to subtle patterns in the data, such as those found in evolving phishing strategies.
+![enter image description here](https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning/blob/master/Image/GBCV.png?raw=tr)
+Best Learning Rate: 0.9
+|            | Precision | Recall    | F1-Score  |
+|------------|-----------|-----------|-----------|
+| 0          | 0.963910  | 0.951039  | 0.957431  |
+| 1          | 0.951731  | 0.964427  | 0.958037  |
+| Accuracy   | 0.957736  |  |
+| Macro Avg  | 0.957820  | 0.957733  | 0.957734  |
+
 #### 3.2.5 CatBoost  
-CatBoost is specifically designed to handle categorical features efficiently without extensive preprocessing. It reduces overfitting through ordered boosting and provides robust performance on imbalanced datasets. **Why Use It:** CatBoost's ability to handle categorical data natively makes it ideal for datasets with mixed feature types, improving classification accuracy without requiring complex feature engineering.
+CatBoost is specifically designed to handle categorical features efficiently without extensive preprocessing. It reduces overfitting through ordered boosting and provides robust performance on imbalanced datasets. CatBoost's ability to handle categorical data natively makes it ideal for datasets with mixed feature types, improving classification accuracy without requiring complex feature engineering.
+![enter image description here](https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning/blob/master/Image/CVCV.png?raw=tr)
+Best Learning Rate: 0.1
+|            | Precision | Recall    | F1-Score  |
+|------------|-----------|-----------|-----------|
+| 0          | 0.967536  | 0.972799  | 0.970160  |
+| 1          | 0.972678  | 0.967391  | 0.970027  |
+| Accuracy   | |
+| Macro Avg  | 0.970107  | 0.970095  | 0.970094  |
+
 #### 3.2.6 XGBoost 
-XGBoost is an optimized distributed gradient boosting library that focuses on performance and speed. It builds decision trees sequentially with an emphasis on handling sparse data and missing values efficiently. **Why Use It:** XGBoost excels in scenarios requiring fast training and prediction times while maintaining high accuracy, making it suitable for real-time phishing detection applications.
-  
+XGBoost is an optimized distributed gradient boosting library that focuses on performance and speed. It builds decision trees sequentially with an emphasis on handling sparse data and missing values efficiently. XGBoost excels in scenarios requiring fast training and prediction times while maintaining high accuracy, making it suitable for real-time phishing detection applications.
+![enter image description here](https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning/blob/master/Image/XGBCV.png?raw=tr)
+Best Learning Rate: 0.8
+|            | Precision | Recall    | F1-Score  |
+|------------|-----------|-----------|-----------|
+| 0          | 0.967838  | 0.967359  | 0.967598  |
+| 1          | 0.967407  | 0.967885  | 0.967646  |
+| Accuracy   | 0.967622  | 0.967622  | 0.967622  |
+| Macro Avg  | 0.967623  | 0.967622  | 0.967622  |
+
+
 ### 3.3 Develop Browser Extension  
+Based on the results shown in the table, I built a Chrome extension to deploy the best-performing model using Flask as the backend. The extension automatically captures the current page being visited and, upon clicking a button, sends a request to the Flask server to obtain prediction results.
+![enter image description here](https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning/blob/master/Image/IMPL.png?raw=true)
   
 ## 4. Experimental results  
-### Evaluation Metrics  
-#### **Precision**:   
-  $$  
-  \text{Precision} = \frac{\text{True Positives (TP)}}{\text{True Positives (TP)} + \text{False Positives (FP)}}  
-  $$  
-- **Interpretation**: Precision measures the proportion of true positive predictions out of all positive predictions made by the model. High precision indicates that when the model predicts a positive class, it is usually correct. It is crucial in scenarios where false positives are costly.  
-  
-#### **Recall**:   
-  $$  
-  \text{Recall} = \frac{\text{True Positives (TP)}}{\text{True Positives (TP)} + \text{False Negatives (FN)}}  
-  $$  
-- **Interpretation**: Recall measures the proportion of true positive predictions out of all actual positive instances. High recall indicates that the model successfully identifies most of the actual positives. It is important in situations where missing true positives is costly.  
-  
-#### **F1-Score**:   
-  $$  
-  F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}  
-  $$  
-- **Interpretation**: The F1-score is the harmonic mean of precision and recall, providing a single metric to balance both. A high F1-score indicates a good balance between precision and recall, useful when both false positives and false negatives are equally important.  
-  
-### **Support**  
-- **Definition**: Support refers to the number of actual occurrences of each class in the test data. It helps understand the distribution of classes in the dataset.  
-  
-#### **Accuracy**  
-- **Definition**:   
-- **Formula**:  
-  $$  
-  \text{Accuracy} = \frac{\text{Correct Predictions}}{\text{Total Predictions}}  
-  $$  
-- **Interpretation**: Accuracy is the overall proportion of correct predictions made by the model. Accuracy provides a general measure of model performance but can be misleading in imbalanced datasets.  
-  
-#### **Macro Average**  
-- **Definition**: Macro average calculates the average precision, recall, and F1-score equally across all classes, without considering class imbalance.  
-- **Use Case**: It treats all classes equally, which can be useful when class distribution is balanced or when each class's performance is equally important.  
-  
-## 5. Future work  
-  
-  
-## 6. References  
-1. J. Mao, W. Tian, P. Li, T. Wei and Z. Liang, "Phishing-Alarm: Robust and Efficient Phishing Detection via Page Component Similarity," in IEEE Access, vol. 5, pp. 17020-17030, 2017, doi: 10.1109/ACCESS.2017.2743528.  
-2. S. Marchal, G. Armano, T. Gröndahl, K. Saari, N. Singh and N. Asokan, "Off-the-Hook: An Efficient and Usable Client-Side Phishing Prevention Application," in IEEE Transactions on Computers, vol. 66, no. 10, pp. 1717-1733, 1 Oct. 2017, doi: 10.1109/TC.2017.2703808.  
-3. Y. A. Alsariera, V. E. Adeyemo, A. O. Balogun and A. K. Alazzawi, "AI Meta-Learners and Extra-Trees Algorithm for the Detection of Phishing Websites," in IEEE Access, vol. 8, pp. 142532-142542, 2020, doi: 10.1109/ACCESS.2020.3013699.  
-4. A. Shrivastava, A. Raturi, A. Sharma, A. Rao, S. Singh and A. Sankhyan, "Phishing Website Detection Using Machine Learning," 2023 1st International Conference on Circuits, Power and Intelligent Systems (CCPIS), Bhubaneswar, India, 2023, pp. 1-6, doi: 10.1109/CCPIS59145.2023.10291190.  
-5. Choudhary, Tarun et al. “Machine Learning Approach for Phishing Attack Detection.” Journal of Artificial Intelligence and Technology (2023): n. pag.  
-6. M, D., Badkul, S., Gharat, K., Vidhate, A.V., & Bhosale, D. (2021). Detection of Phishing Websites Using Ensemble Machine Learning Approach. ITM Web of Conferences.  
-7. https://github.com/emre-kocyigit/phishing-website-detection-content-based  
-8. https://archive.ics.uci.edu/ml/datasets/Phishing+Websites.  
-  
-## 7. Project Repository  
-https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning
-
-
-
-
-
 ### Evaluation Metrics  
 #### **Precision**:   
   $$  
@@ -176,3 +160,59 @@ https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-M
 - **Interpretation**: Accuracy is the overall proportion of correct predictions made by the model. Accuracy provides a general measure of model performance but can be misleading in imbalanced datasets.  
  
 ### Overall Result
+![enter image description here](https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning/blob/master/Image/RES.png?raw=true)
+- **Best Overall Performance**: **Random Forest**
+  - It has the highest accuracy (0.971) and F1-score (0.972).
+  - Very high recall (0.991) and precision (0.994), indicating strong performance in both detecting true positives and minimizing false positives.
+  - Fast prediction time (0.010 seconds), making it efficient for real-time applications.
+
+- **Fastest Model**: **Decision Tree**
+  - Although its accuracy is lower, it has the fastest prediction time (0.001 seconds).
+
+- **Other Considerations**:
+  - **CatBoost Classifier** offers a good balance with high accuracy and very low prediction time.
+  - **K-Nearest Neighbors** has excellent recall and precision but is much slower in prediction.
+
+Overall, **Random Forest** stands out as the best-performing model due to its high accuracy, balanced metrics, and efficient prediction time, making it suitable for applications requiring both accuracy and speed.
+
+### Important Features
+![enter image description here](https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning/blob/master/Image/Top20.png?raw=true)
+  
+## 5. Future work  
+  Based on the experimental results, here are some suggestions for future work:
+
+### Future Work
+
+1. **Feature Enhancement**:
+   - Explore additional features that can improve model accuracy and robustness, such as user interaction patterns and advanced content analysis.
+
+2. **Model Optimization**:
+   - Experiment with hyperparameter tuning and ensemble methods to further enhance model performance and reduce false positives.
+
+3. **Real-Time Deployment**:
+   - Implement the model in real-time systems, optimizing for speed and scalability to handle large volumes of web traffic efficiently.
+
+4. **Cross-Platform Extensions**:
+   - Develop browser extensions for multiple platforms (e.g., Firefox, Safari) to broaden the application’s reach.
+
+5. **Adaptive Learning**:
+   - Incorporate adaptive learning techniques to continuously update the model with new phishing strategies, ensuring it remains effective against evolving threats.
+
+6. **User Interface Improvements**:
+   - Enhance the user interface of the browser extension for better usability and user experience, making it more intuitive for non-technical users. 
+  
+## 6. References  
+1. J. Mao, W. Tian, P. Li, T. Wei and Z. Liang, "Phishing-Alarm: Robust and Efficient Phishing Detection via Page Component Similarity," in IEEE Access, vol. 5, pp. 17020-17030, 2017, doi: 10.1109/ACCESS.2017.2743528.  
+2. S. Marchal, G. Armano, T. Gröndahl, K. Saari, N. Singh and N. Asokan, "Off-the-Hook: An Efficient and Usable Client-Side Phishing Prevention Application," in IEEE Transactions on Computers, vol. 66, no. 10, pp. 1717-1733, 1 Oct. 2017, doi: 10.1109/TC.2017.2703808.  
+3. Y. A. Alsariera, V. E. Adeyemo, A. O. Balogun and A. K. Alazzawi, "AI Meta-Learners and Extra-Trees Algorithm for the Detection of Phishing Websites," in IEEE Access, vol. 8, pp. 142532-142542, 2020, doi: 10.1109/ACCESS.2020.3013699.  
+4. A. Shrivastava, A. Raturi, A. Sharma, A. Rao, S. Singh and A. Sankhyan, "Phishing Website Detection Using Machine Learning," 2023 1st International Conference on Circuits, Power and Intelligent Systems (CCPIS), Bhubaneswar, India, 2023, pp. 1-6, doi: 10.1109/CCPIS59145.2023.10291190.  
+5. Choudhary, Tarun et al. “Machine Learning Approach for Phishing Attack Detection.” Journal of Artificial Intelligence and Technology (2023): n. pag.  
+6. M, D., Badkul, S., Gharat, K., Vidhate, A.V., & Bhosale, D. (2021). Detection of Phishing Websites Using Ensemble Machine Learning Approach. ITM Web of Conferences.  
+7. https://github.com/emre-kocyigit/phishing-website-detection-content-based  
+8. https://archive.ics.uci.edu/ml/datasets/Phishing+Websites.  
+  
+## 7. Project Repository  
+https://github.com/HarryD97/URL-Content-based-Phishing-Website-Detection-using-Machine-Learning
+
+
+
