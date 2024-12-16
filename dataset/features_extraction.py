@@ -86,7 +86,6 @@ class FeaturesExtraction:
             self.url_features.redirecting(),
             self.url_features.prefixSuffix(),
             self.url_features.SubDomains(),
-            self.url_features.Hppts(),
             self.url_features.DomainRegLen(),
             self.url_features.NonStdPort(),
             self.url_features.HTTPSDomainURL(),

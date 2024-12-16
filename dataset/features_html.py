@@ -215,7 +215,7 @@ class features_html:
         except:
             return 0
 
-    # 使用Selenium的动态特征检测 # JS
+    # Selenium
     def check_clipboard_access(self):
         try:
             script = """
