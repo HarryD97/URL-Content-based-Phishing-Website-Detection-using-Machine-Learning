@@ -1,5 +1,5 @@
-from features_html import features_html
-from features_url import  URLFeature
+from dataset.features_html import features_html
+from dataset.features_url import  URLFeature
 
 
 class FeaturesExtraction:

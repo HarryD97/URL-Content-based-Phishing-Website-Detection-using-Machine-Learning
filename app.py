@@ -3,13 +3,12 @@ from flask_cors import CORS
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import joblib
-from features_extraction import FeaturesExtraction
+from dataset.features_extraction import FeaturesExtraction
 
 app = Flask(__name__)
 CORS(app)
 
-# 加载预训练模型
-MODEL_PATH = 'model.pkl'
+MODEL_PATH = 'Model/model.pkl'
 model = joblib.load(MODEL_PATH)
 
 
