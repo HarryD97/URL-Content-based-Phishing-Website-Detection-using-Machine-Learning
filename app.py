@@ -3,6 +3,7 @@ from flask_cors import CORS
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import joblib
+
 from dataset.features_extraction import FeaturesExtraction
 
 app = Flask(__name__)
@@ -10,6 +11,9 @@ CORS(app)
 
 MODEL_PATH = 'Model/model.pkl'
 model = joblib.load(MODEL_PATH)
+
+# Initialize a cache dictionary
+cache = {}
 
 
 def initialize_driver():
@@ -25,18 +29,45 @@ def check_url():
     data = request.get_json()
     url = data.get('url')
 
+    if not url:
+        return jsonify({'error': 'URL is required'}), 400
+
+    # Check if the URL is already in the cache
+    if url in cache:
+        if cache[url]['is_phishing'] == None:
+            return jsonify({
+                'url': url,
+                'error': "Please wait for a moment!",
+                'is_phishing': True,  # Conservative approach on error
+                'confidence': 1.0
+            })
+
+        return jsonify({
+            'url': url,
+            'is_phishing': cache[url]['is_phishing'],
+            'confidence': cache[url]['confidence']
+        })
+
+    # Immediately store a placeholder in cache to prevent duplicate processing
+    cache[url] = {'is_phishing': None, 'confidence': None}
+
     try:
         result = check_if_phishing(url)
+        # Update the cache with actual results
+        cache[url] = result
         return jsonify({
             'url': url,
             'is_phishing': result['is_phishing'],
             'confidence': result['confidence']
         })
     except Exception as e:
+        print(f"Error processing URL {url}: {e}")
+        # Update the cache with an error state to prevent re-processing
+        cache[url] = {'is_phishing': True, 'confidence': 1.0}
         return jsonify({
             'url': url,
             'error': str(e),
-            'is_phishing': True,  # 发生错误时保守处理
+            'is_phishing': True,  # Conservative approach on error
             'confidence': 1.0
         })
 
@@ -44,26 +75,23 @@ def check_url():
 def check_if_phishing(url):
     driver = None
     try:
-        # 初始化WebDriver
         driver = initialize_driver()
-        # 访问URL
         driver.get(url)
-        # 获取页面源代码
+
         html_content = driver.page_source
         soup = BeautifulSoup(html_content, 'html.parser')
-        # 提取特征
+
         feature_extractor = FeaturesExtraction(driver, soup, url)
+
         features = feature_extractor.create_vector()
-        # 使用模型预测
+
         prediction = model.predict([features])[0]
+
         probability = model.predict_proba([features])[0]
 
         confidence = probability[1] if prediction == 1 else probability[0]
 
-        return {
-            'is_phishing': bool(prediction),
-            'confidence': float(confidence)
-        }
+        return {'is_phishing': bool(prediction), 'confidence': float(confidence)}
 
     except Exception as e:
         raise e
@@ -75,5 +103,3 @@ def check_if_phishing(url):
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-

@@ -1,6 +1,43 @@
 from dataset.features_html import features_html
 from dataset.features_url import  URLFeature
 
+class Top20FeaturesExtraction:
+    def __init__(self, driver, soup, url):
+        self.url = url
+        self.driver = driver
+        self.soup = soup
+        self.html_features = features_html(driver, soup)
+        self.url_features = URLFeature(url)
+
+    def create_vector(self):
+        html_features = [
+            self.html_features.number_of_href(),
+            self.html_features.number_of_list(),
+            self.html_features.length_of_text(),
+            self.html_features.number_of_a(),
+            self.html_features.has_link(),
+            self.html_features.number_of_hidden_element(),
+            self.html_features.number_of_div(),
+            self.html_features.number_of_forms(),
+            self.html_features.number_of_images(),
+            self.html_features.number_of_script(),
+            self.html_features.number_of_meta(),
+            self.html_features.length_of_title(),
+            self.html_features.number_of_paragraph(),
+            self.html_features.number_of_span()
+        ]
+
+        url_features = [
+            self.url_features.prefixSuffix(),
+            self.url_features.WebsiteForwarding(),
+            self.url_features.SubDomains(),
+            self.url_features.longUrl(),
+            self.url_features.shortUrl(),
+            self.url_features.LinksPointingToPage()
+        ]
+
+        return html_features + url_features
+
 
 class FeaturesExtraction:
     def __init__(self, driver, soup, url):
